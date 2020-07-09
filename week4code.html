@@ -1,0 +1,102 @@
+<!doctype html>
+
+<!-- this is a comment for human! -->
+
+<html lang="en">
+
+<header>
+  <!-- change the name to yours! -->
+  <title>SQL for Data-Science </title>
+  <!-- link to the master cascading stylesheet -->
+  <link rel="stylesheet" href="css/master.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="name" content="SQL for Data-science">
+</header>
+
+<body>
+  
+  <!-- add the name for the website -->
+  <h1>SQL for Data-science Coursera Assignment Answers</h1>
+
+  <!-- add a section called "About Me" -->
+  <h2>Week 4 Coding</h2>
+
+  <!-- add a few paragraph lines to describe you -->
+  <p><h5> 1.Pull a list of customer ids with the customer’s full name, and address, along with combining their city and country together. Be sure to make a space in between these two and make it UPPER CASE.</h5></p> <!-- where do you live? -->
+  <p>Code:</p> <!-- Where studying/studied? -->
+  <p>select customerid,firstname,lastname,address,city,country from customers where customerid=16;</p>
+  <p>What is the city and country result for CustomerID 16? </p>
+  <p>Answer : Mountain View USA        </p>
+
+ 
+
+<p><h5>2. Create a new employee user id by combining the first 4 letters of the employee’s first name with the first 2 letters of the employee’s last name. Make the new field lower case and pull each individual step to show your work.</h5></p>
+<p>Code:</p>
+<p>	sselect c.FirstName
+, substr(c.FirstName, 1, 4) as FirstNameShort
+, c.LastName
+, substr(c.LastName, 1, 2) as LastNameShort
+, LOWER(substr(c.FirstName, 1, 4) || substr(c.LastName,1,2)) as NewID
+from Customers c;</p>
+<p>What is the final result for Robert King?</p>
+<p>Answer : RobeKi</p>
+
+
+
+<p><h5> 3. Show a list of employees who have worked for the company for 15 or more years using the current date function. Sort by lastname ascending. </h5></p>
+<p>Code : </p>
+<p> select e.LastName,e.FirstName,e.BirthDate,DATE('now') - e.BirthDate as Age,DATE('now') - e.HireDate as Tenure
+from Employees e
+where Tenure >= 15
+order by e.LastName asc;
+ </p>
+<p>What is the lastname of the last person on the list returned?</p>
+<p>Answer : Peacock</p>
+
+
+
+<p><h5> 4.Profiling the Customers table, answer the following question.</h5></p>
+<p>Code :</p>
+<p> select *
+from Customers c
+where c.Company is null;  </p>
+<p> Are there any columns with null values? Indicate any below. Select all that apply. </p>
+<p>	Answer : Company, Phone, Fax, Postal Code </p>
+
+
+
+<p><h5> 5. Find the cities with the most customers and rank in descending order.</h5></p>
+<p>Code :</p>
+<p>  select c.City, count(c.CustomerId)
+from Customers c
+group by c.City
+order by count(c.CustomerId) DESC;  </p>
+<p>Which of the following cities indicate having 2 customers?</p>
+<p>Answer : São Paulo, Mountain View, London </p>
+
+
+
+<p><h5>  6. Create a new customer invoice id by combining a customer’s invoice id with their first and last name while ordering your query in the following order: firstname, lastname, and invoiceID.</h5></p>
+<p>Code :</p>
+<p> select c.FirstName || c.LastName || i.InvoiceId as NewInvoiceId
+from Customers c
+left join Invoices i
+on c.CustomerId = i.CustomerId
+where NewInvoiceId like 'AstridGruber%'
+order by c.FirstName, c.LastName, i.InvoiceId;  </p>
+<p>Select all of the correct "AstridGruber" entries that are returned in your results below. Select all that apply.</p>
+<p>Answer :  AstridGruber273, AstridGruber296, AstridGruber370 </p>
+
+
+
+
+
+</body>
+
+<footer>
+  <hr>
+  <!-- change the name to yours! -->
+  <code>Copyright (C) 2020 Mayank Pathak</code>
+</footer>
+
+</html>

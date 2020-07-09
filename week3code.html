@@ -1,0 +1,118 @@
+<!doctype html>
+
+<!-- this is a comment for human! -->
+
+<html lang="en">
+
+<header>
+  <!-- change the name to yours! -->
+  <title>SQL for Data-Science </title>
+  <!-- link to the master cascading stylesheet -->
+  <link rel="stylesheet" href="css/master.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="name" content="SQL for Data-science">
+</header>
+
+<body>
+  
+  <!-- add the name for the website -->
+  <h1>SQL for Data-science Coursera Assignment Answers</h1>
+
+  <!-- add a section called "About Me" -->
+  <h2>Week 3 Coding</h2>
+
+  <!-- add a few paragraph lines to describe you -->
+  <p><h5> 1.Using a subquery, find the names of all the tracks for the album "Californication".</h5></p> <!-- where do you live? -->
+  <p>Code:</p> <!-- Where studying/studied? -->
+  <p>select t.Name
+from Tracks t
+where t.AlbumId = ( select a.AlbumId
+from Albums a
+where a.Title = 'Californication') </p>
+  <p>What is the title of the 8th track? </p>
+  <p>Answer : Porcelain   </p>
+
+ 
+
+<p><h5>2. Find the total number of invoices for each customer along with the customer's full name, city and email.</h5></p>
+<p>Code:</p>
+<p>	select c.CustomerId, c.FirstName, c.LastName, c.City, c.Email, COUNT(i.InvoiceId)
+from Customers c join Invoices i
+on c.CustomerId = i.CustomerId
+Group by c.CustomerId;</p>
+<p>After running the query described above, what is the email address of the 5th person, František Wichterlová? Enter the answer below (feel free to copy and paste)..</p>
+<p>Answer : frantisekw@jetbrains.com</p>
+
+
+
+<p><h5> 3. Retrieve the track name, album, artistID, and trackID for all the albums. </h5></p>
+<p>Code : </p>
+<p> select t.Name, a.Title, ar.Name, t.TrackId
+from Artists ar
+inner join Albums a
+on ar.ArtistId = a.ArtistId
+inner join Tracks t
+on a.AlbumId = t.AlbumId;
+ </p>
+<p>What is the song title of trackID 12 from the "For Those About to Rock We Salute You" album? Enter the answer below.</p>
+<p>Answer : Breaking The Rules</p>
+
+
+
+<p><h5> 4. Retrieve a list with the managers last name, and the last name of the employees who report to him or her.</h5></p>
+<p>Code :</p>
+<p> select mgr.LastName Manager, e.LastName Employee
+from Employees e
+left join Employees mgr
+on e.ReportsTo = mgr.EmployeeId  </p>
+<p> After running the query described above, who are the reports for the manager named Mitchell (select all that apply)? </p>
+<p>	Answer : King, Callahan </p>
+
+
+
+<p><h5> 5. Find the name and ID of the artists who do not have albums. </h5></p>
+<p>Code :</p>
+<p>  select a.Title, ar.Name, ar.ArtistId
+from Artists ar
+left join Albums a
+on ar.ArtistId = a.ArtistId
+where a.Title is NULL;  </p>
+<p>After running the query described above, two of the records returned have the same last name. Enter that name below.</p>
+<p>Answer : Gilberto </p>
+
+
+
+<p><h5>  6. Use a UNION to create a list of all the employee's and customer's first names and last names ordered by the last name in descending order.</h5></p>
+<p>Code :</p>
+<p> select e.FirstName, e.LastName
+from Employees e
+UNION
+select c.FirstName, c.LastName
+from Customers c
+order by c.LastName DESC  </p>
+<p>After running the query described above, determine what is the last name of the 6th record? Enter it below. Remember to order things in descending order to be sure to get the correct answer.</p>
+<p>Answer : Taylor</p>
+
+
+<p><h5>   7. See if there are any customers who have a different city listed in their billing city versus their customer city.</h5></p>
+<p>Code :</p>
+<p> select c.CustomerId, c.FirstName, c.LastName, c.City
+from Customers c
+join Invoices i
+on c.CustomerId = i.CustomerId
+where c.City <> i.BillingCity;</p>
+<p>Indicate your answer below..</p>
+<p>Answer :  No customers have a different city listed in their billing city versus customer city. </p>
+
+
+
+
+</body>
+
+<footer>
+  <hr>
+  <!-- change the name to yours! -->
+  <code>Copyright (C) 2020 Mayank Pathak</code>
+</footer>
+
+</html>

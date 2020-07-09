@@ -1,0 +1,128 @@
+<!doctype html>
+
+<!-- this is a comment for human! -->
+
+<html lang="en">
+
+<header>
+  <!-- change the name to yours! -->
+  <title>SQL for Data-Science </title>
+  <!-- link to the master cascading stylesheet -->
+  <link rel="stylesheet" href="css/master.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="name" content="SQL for Data-science">
+</header>
+
+<body>
+  
+  <!-- add the name for the website -->
+  <h1>SQL for Data-science Coursera Assignment Answers</h1>
+
+  <!-- add a section called "About Me" -->
+  <h2>Week 2 Coding</h2>
+
+  <!-- add a few paragraph lines to describe you -->
+  <p><h5> 1. Find all the tracks that have a length of 5,000,000 milliseconds or more..</h5></p> <!-- where do you live? -->
+  <p>Code:</p> <!-- Where studying/studied? -->
+  <p>  select 
+Name,
+Milliseconds
+from Tracks
+where Milliseconds>=5000000;   </p>
+  <p> How many tracks are returned? </p>
+  <p>Answer : 2 </p>
+
+ 
+
+<p><h5>2. Run Query: Find all the invoices whose total is between $5 and $15 dollars.</h5></p>
+<p>Code:</p>
+<p>	select
+InvoiceId,
+Total
+from Invoices
+where total between 5 and 15;</p>
+<p>While the query in this example is limited to 10 records, running the query correctly will indicate how many total records there are - enter that number below.</p>
+<p>Answer : 168</p>
+
+
+
+<p><h5> 3. Run Query: Find all the customers from the following States: RJ, DF, AB, BC, CA, WA, NY. </h5></p>
+<p>Code : </p>
+<p> select FirstName, LastName, Company, State
+from Customers
+where State in ('RJ', 'DF', 'AB', 'BC', 'CA', 'WA', 'NY') </p>
+<p>What company does Jack Smith work for?</p>
+<p>Answer : Microsoft Corp</p>
+
+
+
+<p><h5> 4. Run Query: Find all the invoices for customer 56 and 58 where the total was between $1.00 and $5.00.Run Query: Find all the invoices for customer 56 and 58 where the total was between $1.00 and $5.00.</h5></p>
+<p>Code :</p>
+<p> select InvoiceID,InvoiceDate, CustomerId, Total
+from Invoices
+where CustomerId in (56, 58) AND (Total >= 1.00 and Total <= 5.00) </p>
+<p> What was the invoice date for invoice ID 315?  </p>
+<p>	Answer : 10-27-2012  </p>
+
+
+
+<p><h5> 5. Run Query: Find all the tracks whose name starts with 'All'.</h5></p>
+<p>Code :</p>
+<p>   select
+Name,
+TrackId
+from Tracks
+where Name LIKE "ALL%";  </p>
+<p>While only 10 records are shown, the query will indicate how many total records there are for this query - enter that number below.</p>
+<p>Answer : 15</p>
+
+
+
+<p><h5>  6. Run Query: Find all the customer emails that start with "J" and are from gmail.com.</h5></p>
+<p>Code :</p>
+<p> select CustomerID, Email
+from Customers where Email like "J%gmail.com";  </p>
+<p>Enter the one email address returned (you will likely need to scroll to the right) below.</p>
+<p>Answer : jubarnett@gmail.com</p>
+
+
+<p><h5>   7. Run Query: Find all the invoices from the billing city Brasília, Edmonton, and Vancouver and sort in descending order by invoice ID.</h5></p>
+<p>Code :</p>
+<p> select InvoiceId,BillingCity,Total
+from Invoices
+where BillingCity in ('Brasilia','Edmonton','Vancouver') order by InvoiceId desc;</p>
+<p>What is the total invoice amount of the first record returned? Enter the number below without a $ sign. Remember to sort in descending order to get the correct answer.</p>
+<p>Answer : 13.86</p>
+
+
+<p>8. Run Query: Show the number of orders placed by each customer (hint: this is found in the invoices table) and sort the result by the number of orders in descending order.</p>
+<p>Code : </p>
+<p>select CustomerId , COUNT(InvoiceId)
+from Invoices
+group by CustomerId
+order by COUNT(InvoiceId) DESC</p>
+<p>What is the number of items placed for the 8th person on this list? Enter that number below.</p>
+<p>Answer : 7</p>
+
+
+
+<p>9. Run Query: Find the albums with 12 or more tracks.</p>
+<p>Code : </p>
+<p>select TrackId, AlbumId
+from Tracks
+group by AlbumId
+having COUNT(DISTINCT TrackId) >= 12;</p>
+<p>While the number of records returned is limited to 10, the query, if run correctly, will indicate how many total records there are. Enter that number below.</p>
+<p>Answer : 158</p>
+
+
+
+</body>
+
+<footer>
+  <hr>
+  <!-- change the name to yours! -->
+  <code>Copyright (C) 2020 Mayank Pathak</code>
+</footer>
+
+</html>
